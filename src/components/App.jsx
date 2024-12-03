@@ -87,26 +87,24 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route
-          path="/main"
-          element={
-            <>
-              <div className="container">
-                <Header />
-                <Main
-                  projectInfo={projectInfo}
-                  onChangeInput={handleValuesProject}
-                  onSubmitForm={handleSubmitForm}
-                  urlCard={urlCard}
-                />
-                <Footer />
-              </div>
-            </>
-          }
-        />
-      </Routes>
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route
+            path="/main"
+            element={
+              <Main
+                projectInfo={projectInfo}
+                onChangeInput={handleValuesProject}
+                onSubmitForm={handleSubmitForm}
+                urlCard={urlCard}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
     </>
   );
 }
