@@ -2,7 +2,7 @@ import "../styles/layout/ShowProjects.scss";
 
 function ShowProjects() {
   return (
-    <main className="container-showProjects">
+    <main className="showProjects-container">
       <p>ShowProjects</p>
     </main>
   );
