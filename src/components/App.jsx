@@ -8,6 +8,7 @@ import { useState } from "react";
 import localStorage from "../services/localStorage";
 import Landing from "./Landing";
 import { Route, Routes } from "react-router-dom";
+import ShowProjects from "./ShowProjects";
 
 function App() {
   const [projectInfo, setProjectInfo] = useState({
@@ -102,6 +103,7 @@ function App() {
               />
             }
           />
+          <Route path="/showProjects" element={<ShowProjects />} />
         </Routes>
         <Footer />
       </div>
