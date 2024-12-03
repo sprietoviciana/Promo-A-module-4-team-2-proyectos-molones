@@ -11,7 +11,12 @@ function Main({ projectInfo, onChangeInput, onSubmitForm, urlCard }) {
 
       <Preview projectInfo={projectInfo} />
 
-      <Form onChangeInput={onChangeInput} onSubmitForm={onSubmitForm} urlCard={urlCard} />
+      <Form
+        onChangeInput={onChangeInput}
+        onSubmitForm={onSubmitForm}
+        urlCard={urlCard}
+        projectInfo={projectInfo}
+      />
     </main>
   );
 }

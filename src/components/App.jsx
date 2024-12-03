@@ -11,55 +11,59 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [projectInfo, setProjectInfo] = useState({
-    name: "Elegant workspace",
-    slogan: "Diseños Exclusivos",
-    technologies: "React JS - HTML - CSS",
-    demo: "Web Link",
-    repo: "GitHub Link",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Autem, dolorem mollitia.Ullam aliquid",
-    autor: "Emmelie Bjôrklund",
-    job: "Full stack Developer",
-    image: { imgProject },
-    photo: { imgAutor },
+    name: localStorage.get("name", "Elegant workspace"),
+    slogan: localStorage.get("slogan", "Diseños Exclusivos"),
+    technologies: localStorage.get("technologies", "React JS - HTML - CSS"),
+    demo: localStorage.get("demo", "Web Link"),
+    repo: localStorage.get("repo", "GitHub Link"),
+    desc: localStorage.get(
+      "desc",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Autem, dolorem mollitia.Ullam aliquidº"
+    ),
+    autor: localStorage.get("autor", "Emmelie Bjôrklund"),
+    job: localStorage.get("job", "Full stack Developer"),
+    image: localStorage.get("image", { imgProject }),
+    photo: localStorage.get("photo", { imgAutor }),
   });
 
   const [urlCard, setUrlCard] = useState("");
 
   const handleValuesProject = (value, id) => {
     if (id === "name") {
-      setProjectInfo({ ...projectInfo, name: localStorage.set("name", value) });
+      localStorage.set("name", value);
+      setProjectInfo({ ...projectInfo, name: value });
     } else if (id === "slogan") {
-      setProjectInfo({
-        ...projectInfo,
-        slogan: localStorage.set("slogan", value),
-      });
+      localStorage.set("slogan", value);
+      setProjectInfo({ ...projectInfo, slogan: value });
     } else if (id === "repo") {
-      setProjectInfo({ ...projectInfo, repo: localStorage.set("repo", value) });
+      localStorage.set("repo", value);
+      setProjectInfo({ ...projectInfo, repo: value });
     } else if (id === "demo") {
-      setProjectInfo({ ...projectInfo, demo: localStorage.set("demo", value) });
+      localStorage.set("demo", value);
+      setProjectInfo({ ...projectInfo, demo: value });
     } else if (id === "technologies") {
-      setProjectInfo({
-        ...projectInfo,
-        technologies: localStorage.set("technologies", value),
-      });
+      localStorage.set("technologies", value);
+      setProjectInfo({ ...projectInfo, technologies: value });
     } else if (id === "desc") {
-      setProjectInfo({ ...projectInfo, desc: localStorage.set("desc", value) });
+      localStorage.set("desc", value);
+      setProjectInfo({ ...projectInfo, desc: value });
     } else if (id === "autor") {
-      setProjectInfo({
-        ...projectInfo,
-        autor: localStorage.set("autor", value),
-      });
+      localStorage.set("autor", value);
+      setProjectInfo({ ...projectInfo, autor: value });
     } else if (id === "job") {
-      setProjectInfo({ ...projectInfo, job: localStorage.set("job", value) });
+      localStorage.set("job", value);
+      setProjectInfo({ ...projectInfo, job: value });
     } else if (id === "image") {
+      localStorage.set("image", value);
       setProjectInfo({
         ...projectInfo,
-        image: localStorage.set("image", value),
+        image: value,
       });
     } else if (id === "photo") {
+      localStorage.set("photo", value);
       setProjectInfo({
         ...projectInfo,
-        photo: localStorage.set("photo", value),
+        photo: value,
       });
     }
   };
@@ -78,10 +82,9 @@ function App() {
       .then((data) => {
         console.log("data", data);
         setUrlCard(data.cardURL);
-        console.log("urlCard", urlCard);
       });
   };
-  console.log("urlCard", urlCard);
+
   return (
     <>
       <Routes>
