@@ -1,0 +1,36 @@
+.container-landing {
+  background-color: var(--color-dark);
+  width: 100vw;
+  height: 84.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 80px;
+}
+.title-landing {
+  color: white;
+  font-size: 50px;
+  margin-top: -10px;
+  padding: 21px;
+}
+.subtitle {
+  font-size: 18px;
+}
+.Logo-landing {
+  display: flex;
+  justify-content: end;
+}
+.logo-adalab {
+  background-color: var(--color-dark);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  border: 2px solid var(--color-dark);
+  padding: 16px;
+  margin-top: 40px;
+  color: white;
+  font-size: 17px;
+}
