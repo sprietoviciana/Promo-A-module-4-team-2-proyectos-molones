@@ -4,14 +4,19 @@ import Hero from "./Hero";
 
 function ShowProjects() {
   return (
-    <main className="showProjects-container">
-      <Hero>
-        <Link className="button--link" to="/main">
-          Nuevo proyecto
-        </Link>
-      </Hero>
-      <p>ShowProjects</p>
-    </main>
+    <>
+      <header>
+        <Hero>
+          <Link className="button--link" to="/main">
+            Nuevo proyecto
+          </Link>
+        </Hero>
+      </header>
+
+      <main className="showProjects-container">
+        <section>ShowProjects</section>
+      </main>
+    </>
   );
 }
 
