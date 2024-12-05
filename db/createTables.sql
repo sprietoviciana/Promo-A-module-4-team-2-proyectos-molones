@@ -1,4 +1,4 @@
-CREATE TABLE proyects (
+CREATE TABLE projects (
 `idProyect` int auto_increment primary key,
 `name` varchar(45) not null,
 `slogan` varchar(100) not null,
