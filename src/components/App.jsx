@@ -103,7 +103,10 @@ function App() {
               />
             }
           />
-          <Route path="/showProjects" element={<ShowProjects />} />
+          <Route
+            path="/showProjects"
+            element={<ShowProjects projectInfo={projectInfo} />}
+          />
         </Routes>
         <Footer />
       </div>

@@ -1,9 +1,18 @@
-.showProjects-container {
-  background-color: var(--color-dark);
-  height: 70.5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 80px;
+.showProjects {
+  &__container {
+    background-color: var(--color-dark);
+    height: 70.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px;
+  }
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
 }

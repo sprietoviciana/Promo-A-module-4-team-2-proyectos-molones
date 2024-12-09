@@ -1,8 +1,10 @@
 import "../styles/layout/ShowProjects.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Hero from "./Hero";
+import Preview_Card from "./Preview_Card";
 
-function ShowProjects() {
+function ShowProjects({ projectInfo }) {
   return (
     <>
       <header>
@@ -13,11 +15,21 @@ function ShowProjects() {
         </Hero>
       </header>
 
-      <main className="showProjects-container">
-        <section>ShowProjects</section>
+      <main className="showProjects__container">
+        <section className="showProjects__cards">
+          <Preview_Card projectInfo={projectInfo} />
+          <Preview_Card projectInfo={projectInfo} />
+          <Preview_Card projectInfo={projectInfo} />
+          <Preview_Card projectInfo={projectInfo} />
+          <Preview_Card projectInfo={projectInfo} />
+          <Preview_Card projectInfo={projectInfo} />
+        </section>
       </main>
     </>
   );
 }
 
 export default ShowProjects;
+ShowProjects.propTypes = {
+  projectInfo: PropTypes.object.isRequired,
+};
