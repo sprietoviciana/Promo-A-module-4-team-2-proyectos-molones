@@ -5,7 +5,7 @@ import Hero from "./Hero";
 import Preview from "./Preview";
 import { Link } from "react-router-dom";
 
-function Main({ projectInfo, onChangeInput, onSubmitForm, urlCard }) {
+function Main({ projectInfo, onChangeInput, onSubmitForm, urlCard}) {
   return (
     <main className="main">
       <Hero>

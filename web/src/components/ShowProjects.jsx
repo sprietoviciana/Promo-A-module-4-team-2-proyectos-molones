@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Hero from "./Hero";
 import Preview_Card from "./Preview_Card";
 
-function ShowProjects({ projectInfo }) {
+function ShowProjects({ projectInfo, allProjects}) {
   return (
     <>
       <header>
@@ -17,12 +17,10 @@ function ShowProjects({ projectInfo }) {
 
       <main className="showProjects__container">
         <section className="showProjects__cards">
-          <Preview_Card projectInfo={projectInfo} />
-          <Preview_Card projectInfo={projectInfo} />
-          <Preview_Card projectInfo={projectInfo} />
-          <Preview_Card projectInfo={projectInfo} />
-          <Preview_Card projectInfo={projectInfo} />
-          <Preview_Card projectInfo={projectInfo} />
+          {allProjects.map((project) => {
+            return <Preview_Card projectInfo={project} />
+          })}
+          
         </section>
       </main>
     </>
@@ -32,4 +30,5 @@ function ShowProjects({ projectInfo }) {
 export default ShowProjects;
 ShowProjects.propTypes = {
   projectInfo: PropTypes.object.isRequired,
+  allProjects: PropTypes.object.isRequired,
 };

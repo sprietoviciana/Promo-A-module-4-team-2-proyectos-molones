@@ -4,7 +4,7 @@ import imgAutor from "../images/mujer_tech2.png";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import localStorage from "../services/localStorage";
 import Landing from "./Landing";
 import { Route, Routes } from "react-router-dom";
@@ -28,6 +28,8 @@ function App() {
   });
 
   const [urlCard, setUrlCard] = useState("");
+
+  const [allProjects, setAllProjects] = useState([]);
 
   const handleValuesProject = (value, id) => {
     if (id === "name") {
@@ -69,6 +71,18 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    fetch("http://localhost:4001/projects/list")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data", data.projects);
+        setAllProjects(data.projects)
+      });
+    }, []);
+  
+
   const handleSubmitForm = () => {
     fetch("https://dev.adalab.es/api/projectCard", {
       method: "POST",
@@ -81,7 +95,7 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        console.log("data", data);
+        //console.log("data", data);
         setUrlCard(data.cardURL);
       });
   };
@@ -105,7 +119,7 @@ function App() {
           />
           <Route
             path="/showProjects"
-            element={<ShowProjects projectInfo={projectInfo} />}
+            element={<ShowProjects projectInfo={projectInfo} allProjects={allProjects} />}
           />
         </Routes>
         <Footer />
