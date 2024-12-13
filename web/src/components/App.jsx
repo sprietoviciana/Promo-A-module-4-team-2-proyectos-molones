@@ -72,7 +72,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4001/projects/list")
+    fetch("http://localhost:4001/api/projects")
       .then((response) => {
         return response.json();
       })
@@ -84,7 +84,7 @@ function App() {
   
 
   const handleSubmitForm = () => {
-    fetch("https://dev.adalab.es/api/projectCard", {
+    fetch("http://localhost:4001/api/projects", {
       method: "POST",
       body: JSON.stringify(projectInfo),
       headers: {
