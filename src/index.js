@@ -3,7 +3,6 @@ const cors = require("cors");
 const path = require("path");
 const mysql = require("mysql2/promise");
 
-
 const server = express();
 
 server.use(cors());
@@ -19,10 +18,10 @@ server.use(express.static(staticServerPath));
 
 async function getConnection() {
   const connection = await mysql.createConnection({
-      host: "9-76q.h.filess.io",
-      user: "4Code_taskmanyit",
-      password: "726125c8e89b4a14bd5b71809dd2de738d0b82d7",
-      database: "4Code",
+    host: "9-76q.h.filess.io",
+    user: "4Code_taskmanyit",
+    password: "726125c8e89b4a14bd5b71809dd2de738d0b82d7",
+    database: "4Code_taskmanyit",
   });
   connection.connect();
   return connection;
@@ -31,12 +30,12 @@ async function getConnection() {
 // const userProjects = [
 //   {
 //     id: 1,
-//     name: "4Code",
+//     nameProject: "4Code",
 //     slogan: "Lorem ipsum hjajs jsiuyd uahjksjhda",
 //     technologies: "React, JS, Node, Html",
 //     demo: "https://www.youtube.com/watch?v=gmDAMQiyfSE",
 //     repo: "https://github.com/Adalab/ejercicios-de-los-materiales/blob/main/html-spotify/mobile.jpg",
-//     desc: "Lorem ipsum peojsvg hjaghd hgjasd",
+//     description: "Lorem ipsum peojsvg hjaghd hgjasd",
 //     autor: "Nuria",
 //     job: "Devops",
 //     image: "../src/images/ebook-example.jpg",
@@ -44,12 +43,12 @@ async function getConnection() {
 //   },
 //   {
 //     id: 2,
-//     name: "5Code",
+//     nameProject: "5Code",
 //     slogan: "Lorem ipsum hjajs jsiuyd uahjksjhda",
 //     technologies: "React, JS, Node, Html",
 //     demo: "https://www.youtube.com/watch?v=gmDAMQiyfSE",
 //     repo: "https://github.com/Adalab/ejercicios-de-los-materiales/blob/main/html-spotify/mobile.jpg",
-//     desc: "Lorem ipsum peojsvg hjaghd hgjasd",
+//     description: "Lorem ipsum peojsvg hjaghd hgjasd",
 //     autor: "Silvia",
 //     job: "Devops",
 //     image: "../src/images/ebook-example.jpg",
@@ -57,12 +56,12 @@ async function getConnection() {
 //   },
 //   {
 //     id: 3,
-//     name: "6Code",
+//     nameProject: "6Code",
 //     slogan: "Lorem ipsum hjajs jsiuyd uahjksjhda",
 //     technologies: "React, JS, Node, Html",
 //     demo: "https://www.youtube.com/watch?v=gmDAMQiyfSE",
 //     repo: "https://github.com/Adalab/ejercicios-de-los-materiales/blob/main/html-spotify/mobile.jpg",
-//     desc: "Lorem ipsum peojsvg hjaghd hgjasd",
+//     description: "Lorem ipsum peojsvg hjaghd hgjasd",
 //     autor: "Cristina",
 //     job: "Devops",
 //     image: "../src/images/ebook-example.jpg",
@@ -70,12 +69,12 @@ async function getConnection() {
 //   },
 //   {
 //     id: 4,
-//     name: "7Code",
+//     nameProject: "7Code",
 //     slogan: "Lorem ipsum hjajs jsiuyd uahjksjhda",
 //     technologies: "React, JS, Node, Html",
 //     demo: "https://www.youtube.com/watch?v=gmDAMQiyfSE",
 //     repo: "https://github.com/Adalab/ejercicios-de-los-materiales/blob/main/html-spotify/mobile.jpg",
-//     desc: "Lorem ipsum peojsvg hjaghd hgjasd",
+//     description: "Lorem ipsum peojsvg hjaghd hgjasd",
 //     autor: "Belén",
 //     job: "Devops",
 //     image: "../src/images/ebook-example.jpg",
@@ -83,34 +82,39 @@ async function getConnection() {
 //   },
 // ];
 
-server.post("/api/projects", async(request, response) => {
-  const connection = await getConnection();
+server.post("/api/projects", async (req, res) => {
   const projectData = req.body;
+  console.log("Datos que me envía frontend: ", projectData);
 
-  const queryAutor = "INSERT INTO autors (autor, job, photo) VALUES (?, ?, ?)";
+  const connection = await getConnection();
+
+  const queryAutor = "INSERT INTO autors (autor, job, photo) VALUES (?, ?, ?);";
   const [resultAutor] = await connection.query(queryAutor, [
     projectData.autor,
     projectData.job,
-    projectData.photo
-]);
+    projectData.photo,
+  ]);
 
-  const queryProject = "INSERT INTO projects (name, slogan, technologies, repo, demo, desc, image, fk_autor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  console.log("resultAutor.insertId", resultAutor.insertId);
+
+  const queryProject =
+    "INSERT INTO projects (nameProject, slogan, technologies, repo, demo, description, image, fk_autor) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
   const [resultProject] = await connection.query(queryProject, [
-    projectData.name,
+    projectData.nameProject,
     projectData.slogan,
     projectData.technologies,
     projectData.repo,
     projectData.demo,
-    projectData.desc,
+    projectData.description,
     projectData.image,
-    resultAutor.insertId
-]);
+    resultAutor.insertId,
+  ]);
 
-connection.end();
-console.log("Resultado de la query: ", resultProject);
+  connection.end();
+  console.log("Resultado de la query: ", resultProject);
 
-res.status(201).json({
-  status: "success",
-  id: "Sus datos se han enviado correctamente"
-});
+  res.status(201).json({
+    status: "success",
+    id: "Sus datos se han enviado correctamente",
+  });
 });

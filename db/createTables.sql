@@ -1,11 +1,11 @@
 CREATE TABLE projects (
 `idProyect` int auto_increment primary key,
-`name` varchar(45) not null,
+`nameProject` varchar(45) not null,
 `slogan` varchar(100) not null,
 `technologies` varchar(45) not null,
 `repo` LONGTEXT not null,
 `demo` LONGTEXT,
-`desc` LONGTEXT,
+`description` LONGTEXT,
 `image` LONGTEXT not null
 );
 

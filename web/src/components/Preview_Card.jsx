@@ -20,9 +20,9 @@ function Preview_Card({ projectInfo }) {
         </div>
 
         <div className="card__project">
-          <h3 className="card__name">{projectInfo.name}</h3>
+          <h3 className="card__name">{projectInfo.nameProject}</h3>
           <p className="card__slogan">{projectInfo.slogan}</p>
-          <p className="card__description">{projectInfo.desc}</p>
+          <p className="card__description">{projectInfo.description}</p>
 
           <div className="card__technicalInfo">
             <p className="card__technologies">{projectInfo.technologies}</p>

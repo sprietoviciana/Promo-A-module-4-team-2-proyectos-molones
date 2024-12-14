@@ -12,13 +12,13 @@ import ShowProjects from "./ShowProjects";
 
 function App() {
   const [projectInfo, setProjectInfo] = useState({
-    name: localStorage.get("name", "Elegant workspace"),
+    nameProject: localStorage.get("nameProject", "Elegant workspace"),
     slogan: localStorage.get("slogan", "Diseños Exclusivos"),
     technologies: localStorage.get("technologies", "React JS - HTML - CSS"),
     demo: localStorage.get("demo", "Web Link"),
     repo: localStorage.get("repo", "GitHub Link"),
-    desc: localStorage.get(
-      "desc",
+    description: localStorage.get(
+      "description",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Autem, dolorem mollitia.Ullam aliquidº"
     ),
     autor: localStorage.get("autor", "Emmelie Bjôrklund"),
@@ -32,9 +32,9 @@ function App() {
   const [allProjects, setAllProjects] = useState([]);
 
   const handleValuesProject = (value, id) => {
-    if (id === "name") {
-      localStorage.set("name", value);
-      setProjectInfo({ ...projectInfo, name: value });
+    if (id === "nameProject") {
+      localStorage.set("nameProject", value);
+      setProjectInfo({ ...projectInfo, nameProject: value });
     } else if (id === "slogan") {
       localStorage.set("slogan", value);
       setProjectInfo({ ...projectInfo, slogan: value });
@@ -47,9 +47,9 @@ function App() {
     } else if (id === "technologies") {
       localStorage.set("technologies", value);
       setProjectInfo({ ...projectInfo, technologies: value });
-    } else if (id === "desc") {
-      localStorage.set("desc", value);
-      setProjectInfo({ ...projectInfo, desc: value });
+    } else if (id === "description") {
+      localStorage.set("description", value);
+      setProjectInfo({ ...projectInfo, description: value });
     } else if (id === "autor") {
       localStorage.set("autor", value);
       setProjectInfo({ ...projectInfo, autor: value });
@@ -78,10 +78,9 @@ function App() {
       })
       .then((data) => {
         console.log("data", data.projects);
-        setAllProjects(data.projects)
+        setAllProjects(data.projects);
       });
-    }, []);
-  
+  }, []);
 
   const handleSubmitForm = () => {
     fetch("http://localhost:4001/api/projects", {
@@ -119,7 +118,12 @@ function App() {
           />
           <Route
             path="/showProjects"
-            element={<ShowProjects projectInfo={projectInfo} allProjects={allProjects} />}
+            element={
+              <ShowProjects
+                projectInfo={projectInfo}
+                allProjects={allProjects}
+              />
+            }
           />
         </Routes>
         <Footer />
