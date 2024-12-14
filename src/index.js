@@ -8,7 +8,7 @@ const server = express();
 server.use(cors());
 server.use(express.json({ limit: "25mb" }));
 
-const port = 4001;
+const port = 4002;
 server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
@@ -86,6 +86,29 @@ server.post("/api/projects", async (req, res) => {
   const projectData = req.body;
   console.log("Datos que me envía frontend: ", projectData);
 
+  // Compruebo si los datos que envía frontend están completos
+  const requiredData = [
+    "autor",
+    "job",
+    "photo",
+    "nameProject",
+    "slogan",
+    "technologies",
+    "repo",
+    "demo",
+    "description",
+    "image",
+  ];
+
+  for (const data of requiredData) {
+    if (!(data in projectData) || projectData[data] === "") {
+      return res.status(400).json({
+        status: "error",
+        result: "Comprueba si has rellenado todos los campos",
+      });
+    }
+  }
+
   const connection = await getConnection();
 
   const queryAutor = "INSERT INTO autors (autor, job, photo) VALUES (?, ?, ?);";
@@ -115,6 +138,7 @@ server.post("/api/projects", async (req, res) => {
 
   res.status(201).json({
     status: "success",
-    id: "Sus datos se han enviado correctamente",
+    result: "Sus datos se han enviado correctamente",
+    urlCard: "esta será la url de la página para visualizar el proyecto",
   });
 });

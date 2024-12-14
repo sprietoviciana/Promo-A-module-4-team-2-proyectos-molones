@@ -83,7 +83,7 @@ function App() {
   }, []);
 
   const handleSubmitForm = () => {
-    fetch("http://localhost:4001/api/projects", {
+    fetch("http://localhost:4002/api/projects", {
       method: "POST",
       body: JSON.stringify(projectInfo),
       headers: {
