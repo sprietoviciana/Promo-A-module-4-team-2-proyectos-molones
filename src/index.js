@@ -139,6 +139,6 @@ server.post("/api/projects", async (req, res) => {
   res.status(201).json({
     status: "success",
     result: "Sus datos se han enviado correctamente",
-    urlCard: "esta será la url de la página para visualizar el proyecto",
+    cardURL: "esta será la url de la página para visualizar el proyecto",
   });
 });
