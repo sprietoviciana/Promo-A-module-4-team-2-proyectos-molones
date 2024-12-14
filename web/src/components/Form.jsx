@@ -91,7 +91,7 @@ function Form({ onChangeInput, onSubmitForm, urlCard, projectInfo }) {
           className="addForm__input"
           type="text"
           name="description"
-          id="desc"
+          id="description"
           placeholder="descripción"
           value={
             localStorage.get("description") === undefined
