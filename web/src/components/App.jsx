@@ -72,13 +72,12 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4001/api/projects")
+    fetch("http://localhost:4002/ShowProjects")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log("data", data.projects);
-        setAllProjects(data.projects);
+        setAllProjects(data.message);
       });
   }, []);
 

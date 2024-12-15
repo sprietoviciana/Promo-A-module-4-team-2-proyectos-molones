@@ -82,6 +82,7 @@ async function getConnection() {
 //   },
 // ];
 
+// Subir un proyecto a la bbdd
 server.post("/api/projects", async (req, res) => {
   const projectData = req.body;
   console.log("Datos que me envía frontend: ", projectData);
@@ -141,4 +142,30 @@ server.post("/api/projects", async (req, res) => {
     result: "Sus datos se han enviado correctamente",
     cardURL: "esta será la url de la página para visualizar el proyecto",
   });
+});
+
+// Visualizar todos los proyectos
+
+server.get("/ShowProjects", async (req, res) => {
+  const connection = await getConnection();
+
+  const query = `SELECT * FROM autors
+                  INNER JOIN projects
+                  ON projects.fk_autor = autors.idAutor;`;
+
+  const [result] = await connection.query(query);
+
+  connection.end();
+
+  if (result.length === 0) {
+    res.status(200).json({
+      status: "error",
+      message: "No se ha encontrado ningún projecto",
+    });
+  } else {
+    res.status(200).json({
+      status: "success",
+      message: result,
+    });
+  }
 });
