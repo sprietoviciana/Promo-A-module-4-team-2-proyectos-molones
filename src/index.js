@@ -23,9 +23,9 @@ server.use(express.static(staticServerPath));
 async function getConnection() {
   const connection = await mysql.createConnection({
     host: "9-76q.h.filess.io",
-    user: "process.env.USER_DB",
-    password: "process.env.PASSWORD_DB",
-    database: "4Code_taskmanyit",
+    user: process.env.USER_DB,
+    password: process.env.PASSWORD_DB,
+    database: process.env.USER_DB,
   });
   connection.connect();
   return connection;
