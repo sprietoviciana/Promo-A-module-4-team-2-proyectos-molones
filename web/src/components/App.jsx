@@ -71,8 +71,14 @@ function App() {
     }
   };
 
+  const URL_PRODUCTION =
+    "https://promo-a-module-4-team-2-proyectos.onrender.com";
+  const URL_LOCAL = "http://localhost:4002";
+  const URL =
+    process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
+  console.log("esto es el entorno", process.env.NODE_ENV);
   useEffect(() => {
-    fetch("http://localhost:4002/ShowProjects")
+    fetch(`${URL}/ShowProjects`)
       .then((response) => {
         return response.json();
       })
@@ -82,7 +88,7 @@ function App() {
   }, []);
 
   const handleSubmitForm = () => {
-    fetch("http://localhost:4002/api/projects", {
+    fetch(`${URL}/api/projects`, {
       method: "POST",
       body: JSON.stringify(projectInfo),
       headers: {
