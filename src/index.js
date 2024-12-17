@@ -3,15 +3,16 @@ const cors = require("cors");
 const path = require("path");
 const mysql = require("mysql2/promise");
 
-
-
 const server = express();
 
 server.use(cors());
 server.use(express.json({ limit: "25mb" }));
+
+require("dotenv").config();
+
 server.set("view engine", "ejs");
 
-const port = 4002;
+const port = process.env.PORT;
 server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
@@ -22,22 +23,18 @@ server.use(express.static(staticServerPath));
 async function getConnection() {
   const connection = await mysql.createConnection({
     host: "9-76q.h.filess.io",
-    user: "4Code_taskmanyit",
-    password: "726125c8e89b4a14bd5b71809dd2de738d0b82d7",
+    user: "process.env.USER_DB",
+    password: "process.env.PASSWORD_DB",
     database: "4Code_taskmanyit",
   });
   connection.connect();
   return connection;
 }
 
-
-
 // Subir un proyecto a la bbdd
 server.post("/api/projects", async (req, res) => {
   const projectData = req.body;
   console.log("Datos que me envía frontend: ", projectData);
-
-
 
   // Compruebo si los datos que envía frontend están completos
   const requiredData = [
@@ -53,9 +50,6 @@ server.post("/api/projects", async (req, res) => {
     "image",
   ];
 
-
-
-
   for (const data of requiredData) {
     if (!(data in projectData) || projectData[data] === "") {
       return res.status(400).json({
@@ -64,8 +58,6 @@ server.post("/api/projects", async (req, res) => {
       });
     }
   }
-
-
 
   const connection = await getConnection();
 
@@ -104,12 +96,10 @@ server.post("/api/projects", async (req, res) => {
 //Motor de plantillas
 
 server.get("/detail/:idProject", async (req, res) => {
-
   const id = req.params.idProject;
   const connection = await getConnection();
   const query = `SELECT * FROM projects INNER JOIN autors ON projects.fk_autor = autors.idAutor WHERE projects.idProyect = ?`;
-  const [result] = await connection.query(query, [id])
-
+  const [result] = await connection.query(query, [id]);
 
   connection.end();
 
@@ -119,11 +109,9 @@ server.get("/detail/:idProject", async (req, res) => {
       message: "No se ha encontrado ningún projecto",
     });
   } else {
-    res.render("detailProject", { projectInfo: result[0] })
-
+    res.render("detailProject", { projectInfo: result[0] });
   }
 });
-
 
 // Visualizar todos los proyectos
 
