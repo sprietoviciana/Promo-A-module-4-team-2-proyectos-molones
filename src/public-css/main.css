@@ -8,10 +8,18 @@
   height: 100vh;
 }
 
+.card__authorPhoto {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0.8rem;
+}
+
 .projectImage {
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
   outline: solid 1px pink;
-  background-image: url("../../images/apuntes-tablet.jpg");
   background-position: top center;
   background-size: cover;
   border-radius: 20px;
@@ -90,7 +98,6 @@
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-image: url("../../images/mujer_tech2.png");
   background-position: center;
   background-size: cover;
   margin-bottom: 0.8rem;
@@ -137,4 +144,21 @@
 
 .card__technologies {
   font: 500 1rem "Catamaran", sans-serif;
+}
+
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 #575757;
+}
+
+.icon__www {
+  background-image: url("/globe-solid.svg");
+}
+
+.icon__github {
+  background-image: url("/github.svg");
 }
