@@ -20,6 +20,9 @@ server.listen(port, () => {
 const staticServerPath = "./web/dist";
 server.use(express.static(staticServerPath));
 
+const pathServerPublicStyles = "./src/public-css";
+server.use(express.static(pathServerPublicStyles));
+
 async function getConnection() {
   const connection = await mysql.createConnection({
     host: "9-76q.h.filess.io",

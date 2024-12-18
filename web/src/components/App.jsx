@@ -23,8 +23,8 @@ function App() {
     ),
     autor: localStorage.get("autor", "Emmelie Bjôrklund"),
     job: localStorage.get("job", "Full stack Developer"),
-    image: localStorage.get("image", { imgProject }),
-    photo: localStorage.get("photo", { imgAutor }),
+    image: localStorage.get("image", imgProject),
+    photo: localStorage.get("photo", imgAutor),
   });
 
   const [urlCard, setUrlCard] = useState("");
@@ -74,7 +74,8 @@ function App() {
   const URL_PRODUCTION =
     "https://promo-a-module-4-team-2-proyectos.onrender.com";
   const URL_LOCAL = "http://localhost:4002";
-  const URL = process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
+  const URL =
+    process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
   //console.log("esto es el enviroment", URL);
 
   useEffect(() => {
