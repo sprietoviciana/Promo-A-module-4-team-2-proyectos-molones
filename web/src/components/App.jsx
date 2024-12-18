@@ -71,12 +71,12 @@ function App() {
     }
   };
 
-  // const URL_PRODUCTION =
-  //   "https://promo-a-module-4-team-2-proyectos.onrender.com";
-  // const URL_LOCAL = "http://localhost:4002";
-  const URL = "http://localhost:4002";
-  // process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
-  // console.log("esto es el entorno", process.env.NODE_ENV);
+  const URL_PRODUCTION =
+    "https://promo-a-module-4-team-2-proyectos.onrender.com";
+  const URL_LOCAL = "http://localhost:4002";
+  const URL = process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
+  //console.log("esto es el enviroment", URL);
+
   useEffect(() => {
     fetch(`${URL}/ShowProjects`)
       .then((response) => {
