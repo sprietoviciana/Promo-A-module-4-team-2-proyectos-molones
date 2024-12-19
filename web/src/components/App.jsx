@@ -73,7 +73,7 @@ function App() {
 
   const URL_PRODUCTION =
     "https://promo-a-module-4-team-2-proyectos.onrender.com";
-  const URL_LOCAL = "http://localhost:4002";
+  const URL_LOCAL = `http://localhost:${process.env.PORT}`;
   const URL =
     process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
   //console.log("esto es el enviroment", URL);
