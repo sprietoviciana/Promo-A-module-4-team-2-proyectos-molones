@@ -12,7 +12,7 @@ require("dotenv").config();
 
 server.set("view engine", "ejs");
 
-const port = 4002;
+const port = process.env.PORT;
 server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
