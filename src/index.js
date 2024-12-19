@@ -17,11 +17,7 @@ server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
 
-const staticServerPath = "./web/dist";
-server.use(express.static(staticServerPath));
 
-const pathServerPublicStyles = "./src/public-css";
-server.use(express.static(pathServerPublicStyles));
 
 async function getConnection() {
   const connection = await mysql.createConnection({
@@ -141,3 +137,9 @@ server.get("/ShowProjects", async (req, res) => {
     });
   }
 });
+
+const staticServerPath = "./web/dist";
+server.use(express.static(staticServerPath));
+
+const pathServerPublicStyles = "./src/public-css";
+server.use(express.static(pathServerPublicStyles));
