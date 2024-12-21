@@ -165,3 +165,12 @@ body {
 .icon__github {
   background-image: url("./icons/github.svg");
 }
+
+.footer {
+  background-color: #387b76;
+}
+
+.logoSponsor-footer {
+  height: 46px;
+  margin-bottom: 10px;
+}
