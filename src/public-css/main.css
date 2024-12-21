@@ -1,5 +1,36 @@
 body {
   background-color: rgb(56 123 118);
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 7px 5px;
+  gap: 7px;
+}
+
+.header__companyLogo {
+  height: 31px;
+  color: #ffffff;
+}
+
+.header__title {
+  font: 300 1.4rem "Poppins", sans-serif;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,7 +201,7 @@ body {
   background-color: #387b76;
 }
 
-.logoSponsor-footer {
+.logoSponsor {
   height: 46px;
   margin-bottom: 10px;
 }
