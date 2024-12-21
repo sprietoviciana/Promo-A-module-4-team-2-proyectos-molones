@@ -6,20 +6,20 @@ import "../styles/layout/Header.scss";
 function Header() {
   return (
     <header className="header">
-      <a
-        className="header__brand"
-        href="./"
+      <Link
+        to="/"
         title="Haz click para volver a la página inicial"
+        className="header__brand"
       >
-        <Link to="/">
-          <img
-            className="header__companyLogo"
-            src={laptopCodeSolid}
-            alt="Logo proyectos molones"
-          />
-        </Link>
+        <img
+          className="header__companyLogo"
+          src={laptopCodeSolid}
+          alt="Logo proyectos molones"
+        />
+
         <h1 className="header__title">4Code</h1>
-      </a>
+      </Link>
+
       <Logo />
     </header>
   );

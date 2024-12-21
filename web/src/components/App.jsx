@@ -73,10 +73,9 @@ function App() {
 
   const URL_PRODUCTION =
     "https://promo-a-module-4-team-2-proyectos.onrender.com";
-  const URL_LOCAL = `http://localhost:${process.env.PORT}`;
+  const URL_LOCAL = `http://localhost:${import.meta.env.VITE_PORT}`;
   const URL =
-    process.env.NODE_ENV === "development" ? URL_LOCAL : URL_PRODUCTION;
-  //console.log("esto es el enviroment", URL);
+    import.meta.env.PROD ? URL_PRODUCTION : URL_LOCAL;
 
   useEffect(() => {
     fetch(`${URL}/ShowProjects`)
