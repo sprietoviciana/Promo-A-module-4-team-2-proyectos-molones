@@ -10,9 +10,7 @@ function Landing() {
           Escaparate en línea para recoger ideas a través de la tecnología
         </p>
         <div className="button btn">
-          <Link to="/main">
-            <a href="">Comenzar</a>
-          </Link>
+          <Link to="/main">Comenzar</Link>
         </div>
       </main>
     </>
