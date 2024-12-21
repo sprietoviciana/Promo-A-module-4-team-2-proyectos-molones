@@ -4,7 +4,6 @@ function Preview_Card({ projectInfo }) {
   return (
     <>
       <article className="card">
-        <button>X</button>
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
             Personal project card
