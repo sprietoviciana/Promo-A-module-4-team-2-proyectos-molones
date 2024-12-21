@@ -17,8 +17,6 @@ server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
 
-
-
 async function getConnection() {
   const connection = await mysql.createConnection({
     host: "9-76q.h.filess.io",
@@ -88,7 +86,7 @@ server.post("/api/projects", async (req, res) => {
   res.status(201).json({
     status: "success",
     result: "Sus datos se han enviado correctamente",
-    cardURL: `http://localhost:4002/detail/${resultProject.insertId}`,
+    cardURL: `http://localhost:${process.env.PORT}/detail/${resultProject.insertId}`,
   });
 });
 

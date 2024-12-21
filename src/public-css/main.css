@@ -5,17 +5,10 @@ body {
   align-items: center;
 }
 .preview {
-  width: 50%;
-  height: 80%;
-}
-
-.card__authorPhoto {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  margin-bottom: 0.8rem;
+  min-width: 374px;
+  width: 70%;
+  max-width: 500px;
+  height: 60%;
 }
 
 .projectImage {
@@ -28,12 +21,12 @@ body {
 }
 
 .preview .card {
-  margin-inline: 20px;
-
+  /* margin-inline: 20px; */
   transform: translateY(-45px);
 }
 
 .card {
+  width: 100%;
   display: grid;
   grid-template-columns: 40% 60%;
 
@@ -53,6 +46,14 @@ body {
   background-clip: content-box, border-box;
 }
 
+.card__authorPhoto {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0.8rem;
+}
 .card__projectTitle {
   grid-column: 2;
   position: relative;
