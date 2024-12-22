@@ -1,9 +1,17 @@
 import PropTypes from "prop-types";
 
-function Preview_Card({ projectInfo }) {
+function Preview_Card({ projectInfo, onDeleteProject }) {
+  const handleDelete = () => {
+    document.getElementById(projectInfo.idProyect).remove();
+    onDeleteProject(projectInfo.idProyect);
+  };
+
   return (
     <>
-      <article className="card">
+      <article className="card" id={projectInfo.idProyect}>
+        <button title="Delete" className="card-btn" onClick={handleDelete}>
+          X
+        </button>
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
             Personal project card
@@ -49,4 +57,5 @@ function Preview_Card({ projectInfo }) {
 export default Preview_Card;
 Preview_Card.propTypes = {
   projectInfo: PropTypes.object.isRequired,
+  onDeleteProject: PropTypes.func.isRequired,
 };

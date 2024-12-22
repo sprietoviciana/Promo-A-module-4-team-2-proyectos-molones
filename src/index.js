@@ -17,8 +17,6 @@ server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
 
-
-
 async function getConnection() {
   const connection = await mysql.createConnection({
     host: "9-76q.h.filess.io",
@@ -88,7 +86,7 @@ server.post("/api/projects", async (req, res) => {
   res.status(201).json({
     status: "success",
     result: "Sus datos se han enviado correctamente",
-    cardURL: `http://localhost:4002/detail/${resultProject.insertId}`,
+    cardURL: `http://localhost:${port}/detail/${resultProject.insertId}`,
   });
 });
 
@@ -135,6 +133,23 @@ server.get("/ShowProjects", async (req, res) => {
       status: "success",
       message: result,
     });
+  }
+});
+
+//endpoint para eliminar un proyecto
+
+server.delete("/ShowProjects/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) {
+    res.status(400).json({
+      message: "Invalid ID. Must be a number.",
+    });
+  } else {
+    const connection = await getConnection();
+    const query = "DELETE FROM projects WHERE idProyect = ?";
+    await connection.query(query, [id]);
+    connection.end();
+    res.status(204).send();
   }
 });
 

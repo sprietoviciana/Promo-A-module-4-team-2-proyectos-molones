@@ -5,7 +5,13 @@ import Hero from "./Hero";
 import Preview from "./Preview";
 import { Link } from "react-router-dom";
 
-function Main({ projectInfo, onChangeInput, onSubmitForm, urlCard}) {
+function Main({
+  projectInfo,
+  onChangeInput,
+  onSubmitForm,
+  urlCard,
+  onDeleteProject,
+}) {
   return (
     <main className="main">
       <Hero>
@@ -14,7 +20,7 @@ function Main({ projectInfo, onChangeInput, onSubmitForm, urlCard}) {
         </Link>
       </Hero>
 
-      <Preview projectInfo={projectInfo} />
+      <Preview projectInfo={projectInfo} onDeleteProject={onDeleteProject} />
 
       <Form
         onChangeInput={onChangeInput}
@@ -33,4 +39,5 @@ Main.propTypes = {
   projectInfo: PropTypes.object.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
   urlCard: PropTypes.string.isRequired,
+  onDeleteProject: PropTypes.func.isRequired,
 };

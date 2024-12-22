@@ -74,17 +74,20 @@ function App() {
   const URL_PRODUCTION =
     "https://promo-a-module-4-team-2-proyectos.onrender.com";
   const URL_LOCAL = `http://localhost:${import.meta.env.VITE_PORT}`;
-  const URL =
-    import.meta.env.PROD ? URL_PRODUCTION : URL_LOCAL;
+  const URL = import.meta.env.PROD ? URL_PRODUCTION : URL_LOCAL;
 
-  useEffect(() => {
-    fetch(`${URL}/ShowProjects`)
+  const fetchProjects = () => {
+    return fetch(`${URL}/ShowProjects`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setAllProjects(data.message);
       });
+  };
+
+  useEffect(() => {
+    fetchProjects();
   }, []);
 
   const handleSubmitForm = () => {
@@ -104,6 +107,13 @@ function App() {
       });
   };
 
+  // fetch delete
+  const handleDeleteProject = (patata) => {
+    fetch(`${URL}/ShowProjects/${patata}`, {
+      method: "DELETE",
+    }).then(() => fetchProjects());
+  };
+
   return (
     <>
       <div className="container">
@@ -118,6 +128,7 @@ function App() {
                 onChangeInput={handleValuesProject}
                 onSubmitForm={handleSubmitForm}
                 urlCard={urlCard}
+                onDeleteProject={handleDeleteProject}
               />
             }
           />
@@ -127,6 +138,7 @@ function App() {
               <ShowProjects
                 projectInfo={projectInfo}
                 allProjects={allProjects}
+                onDeleteProject={handleDeleteProject}
               />
             }
           />
