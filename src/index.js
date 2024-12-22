@@ -14,7 +14,7 @@ server.set("view engine", "ejs");
 
 const port = process.env.PORT;
 const URL = process.env.PROD
-  ? "https://promo-a-module-4-team-2-proyectos.onrender.com/"
+  ? "https://promo-a-module-4-team-2-proyectos.onrender.com"
   : `http://localhost:${port}`;
 console.log(process.env);
 server.listen(port, () => {
