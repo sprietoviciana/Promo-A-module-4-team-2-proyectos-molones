@@ -109,8 +109,8 @@ function App() {
   };
 
   // fetch delete
-  const handleDeleteProject = (patata) => {
-    fetch(`${URL}/ShowProjects/${patata}`, {
+  const handleDeleteProject = (id) => {
+    fetch(`${URL}/ShowProjects/${id}`, {
       method: "DELETE",
     }).then(() => fetchProjects());
   };
