@@ -190,11 +190,11 @@ body {
 }
 
 .icon__www {
-  background-image: url("./icons/globe-solid.svg");
+  background-image: url("../icons/globe-solid.svg");
 }
 
 .icon__github {
-  background-image: url("./icons/github.svg");
+  background-image: url("../icons/github.svg");
 }
 
 .footer {
