@@ -13,6 +13,10 @@ require("dotenv").config();
 server.set("view engine", "ejs");
 
 const port = process.env.PORT;
+const URL = process.env.PROD
+  ? "https://promo-a-module-4-team-2-proyectos.onrender.com/"
+  : `http://localhost:${port}`;
+console.log(process.env);
 server.listen(port, () => {
   console.log(`Server is running in http://localhost:${port}`);
 });
@@ -86,7 +90,7 @@ server.post("/api/projects", async (req, res) => {
   res.status(201).json({
     status: "success",
     result: "Sus datos se han enviado correctamente",
-    cardURL: `http://localhost:${port}/detail/${resultProject.insertId}`,
+    cardURL: `${URL}/detail/${resultProject.insertId}`,
   });
 });
 
