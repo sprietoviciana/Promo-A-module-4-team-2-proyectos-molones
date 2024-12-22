@@ -86,7 +86,7 @@ server.post("/api/projects", async (req, res) => {
   res.status(201).json({
     status: "success",
     result: "Sus datos se han enviado correctamente",
-    cardURL: `http://localhost:${port}/detail/${resultProject.insertId}`,
+    cardURL: `http://localhost:${port}detail/${resultProject.insertId}`,
   });
 });
 
