@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Hero from "./Hero";
 import Preview_Card from "./Preview_Card";
 
-function ShowProjects({ allProjects, onDeleteProject }) {
+function ShowProjects({ allProjects }) {
   return (
     <>
       <header>
@@ -18,13 +18,7 @@ function ShowProjects({ allProjects, onDeleteProject }) {
       <main className="showProjects__container">
         <section className="showProjects__cards">
           {allProjects.map((project) => {
-            return (
-              <Preview_Card
-                key={project.id}
-                projectInfo={project}
-                onDeleteProject={onDeleteProject}
-              />
-            );
+            return <Preview_Card key={project.id} projectInfo={project} />;
           })}
         </section>
       </main>
@@ -35,5 +29,4 @@ function ShowProjects({ allProjects, onDeleteProject }) {
 export default ShowProjects;
 ShowProjects.propTypes = {
   allProjects: PropTypes.array.isRequired,
-  onDeleteProject: PropTypes.func.isRequired,
 };
