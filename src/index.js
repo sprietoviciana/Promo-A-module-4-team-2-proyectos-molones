@@ -2,11 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const mysql = require("mysql2/promise");
+const swaggerUI = require("swagger-ui-express");
+const swaggerDoc = require("./swagger.json");
 
 const server = express();
 
 server.use(cors());
 server.use(express.json({ limit: "25mb" }));
+server.use("/api-doc", swaggerUI.server, swaggerUI.setup(swaggerDoc));
 
 require("dotenv").config();
 
@@ -124,7 +127,7 @@ server.get("/ShowProjects", async (req, res) => {
   connection.end();
 
   if (result.length === 0) {
-    res.status(200).json({
+    res.status(400).json({
       status: "error",
       message: "No se ha encontrado ningún projecto",
     });

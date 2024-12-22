@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Proyectos API",
+      "version": "1.0.0",
+      "description": "API para la gestión de proyectos y autores"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:4002",
+        "description": "Servidor de desarrollo"
+      }
+    ],
+    "paths": {
+      "/ShowProjects": {
+        "get": {
+          "summary": "Lista todos los proyectos",
+          "responses": {
+            "400": {
+              "description": "No se ha encontrado  ningún proyecto",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "200": {
+                "description": "Operación exitosa",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ShowProjects"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+          }
+        }
+      },
+      "/api/projects": {
+        "post": {
+          "summary": "Crea un nuevo proyecto",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewProject"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Proyecto creado exitosamente"
+            }
+          }
+        }
+      },
+      "/project/{idproject}": {
+        "get": {
+          "summary": "Obtiene detalles de un proyecto específico",
+          "parameters": [
+            {
+              "name": "idproject",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa"
+            },
+            "404": {
+              "description": "Proyecto no encontrado"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ShowProjects": {
+          "type": "object",
+          "properties": {
+            "idAutor": {
+              "type": "integer"
+            },
+            "autor": {
+                "type": "string"
+            },
+            "job": {
+              "type": "string"
+            },
+            "photo": {
+                "type": "string",
+                "format": "uri"
+            },
+            "idProyect": {
+                "type": "integer"
+            },
+            "nameProject": {
+                "type": "string"
+            },
+            "slogan": {
+                "type": "string"
+            },
+            "technologies": {
+                "type": "string"
+            },
+            "repo": {
+                "type": "string",
+                "format": "uri"
+            },
+            "demo": {
+                "type": "string",
+                "format": "uri"
+            },
+            "description": {
+                "type": "string"
+            },
+            "image": {
+                "type": "string",
+                "format": "uri"
+            },
+            "fk_autor": {
+                "type": "integer"
+            }
+          }
+        },
+        "NewProject": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slogan": {
+              "type": "string"
+            }
+            
+          }
+        }
+      }
+    }
+  }
