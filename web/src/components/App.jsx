@@ -104,8 +104,7 @@ function App() {
       .then((data) => {
         //console.log("data", data);
         setUrlCard(data.cardURL);
-      })
-      .then(() => fetchProjects());
+      });
   };
 
   // fetch delete
